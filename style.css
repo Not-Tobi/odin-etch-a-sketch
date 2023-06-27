@@ -1,0 +1,14 @@
+.grid {
+    border: 2px solid black;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.square {
+    box-sizing: border-box;
+    border: 1px solid black;
+    background-color: white;
+}
