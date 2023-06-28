@@ -9,18 +9,22 @@
 </head>
 <body>
     <div class='title'>Sketch It!</div>
-    <div clas ='grindAndSlider'>
-        <div class="grid"></div>
-        <input id="slider" type="range" min="1" max="100" step="1" value="16"/>
-        <p><output id="value"></output></p>  
-    </div> 
 
-    <div class="tool">
-        <input id="userColour" type="color" id="head" name="head">
-        <button class="easer">Easer</button>      
-        <button class="rainbow">Rainbow</button>
-        <button class="reset">Reset</button>
-    </div>  
+    <div class="main">
+        <div class="tools">
+            <button class="btn userColourBorder active">
+                <input id="userColour" type="color" value="#475F94">
+            </button>    
+            <button class="btn easer">Easer</button>      
+            <button class="btn rainbow">Rainbow</button>
+            <button class="clear">Clear</button>
+        </div> 
+        <div class ='gridAndSlider'>
+            <div class="grid"></div>
+            <input id="slider" type="range" min="1" max="100" step="1" value="16"/>
+            <p><output id="value"></output></p>  
+        </div> 
+    </div>
 
     <div class='footer'>
         <div class='footerText'>Made By Not-Tobi</div>

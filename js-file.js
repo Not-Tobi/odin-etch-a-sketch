@@ -1,11 +1,12 @@
 let mouse;
 let random;
-let colour = 'black';
+let colour = '#475F94';
 let gridSize = 500;
 let userInput = 16;
 let squareSize;
 let squareTotal;
 let grid = document.querySelector(".grid");
+let btn = document.querySelectorAll(".btn");
 interactive();
 
 // Remove existing grid
@@ -66,24 +67,64 @@ function interactive() {
     }
 }
 
-// User colour
+// Remove Active Class
+function removeActiveClass() {
+    btn.forEach(btn => {
+        console.log(btn)
+        btn.classList.remove('active');
+    })
+}
+
+// User Colours
 let userColour = document.querySelector("#userColour");
+let userColourBorder = document.querySelector(".userColourBorder");
 userColour.addEventListener('input',() => {
+    userColourBorder.style.backgroundColor = userColour.value;
     colour = userColour.value;
     random = false;
+})
+
+userColourBorder.addEventListener('click',() => {
+    if (userColourBorder.classList.contains('active')) {
+        userColourBorder.classList.remove('active');
+    }
+    else {
+        removeActiveClass();
+        userColourBorder.classList.add('active');
+        colour = userColour.value;
+        random = false;
+    }
 })
 
 // Easer
 let easer = document.querySelector(".easer");
 easer.addEventListener('click',() => {
-    colour = 'white';
-    random = false;
+    if (easer.classList.contains('active')) {
+        colour = userColour.value;
+        random = false;
+        easer.classList.remove('active');
+    }
+    else {
+        removeActiveClass();
+        easer.classList.add('active');
+        colour = 'white';
+        random = false;
+    }
 })
 
 // Rainbow
 let rainbow = document.querySelector(".rainbow");
 rainbow.addEventListener('click',() => {
-    return random = true;
+    if (rainbow.classList.contains('active')) {
+        colour = userColour.value;
+        random = false;
+        rainbow.classList.remove('active');
+    }
+    else {
+        removeActiveClass();
+        rainbow.classList.add('active');
+        return random = true;
+    }
 })
 
 function randomColour() {
@@ -93,14 +134,13 @@ function randomColour() {
     return colour = `rgb(${r}, ${g}, ${b})`
 }
 
-// Reset
-let reset = document.querySelector(".reset");
-reset.addEventListener('click',() => {
+// Clear the grid
+let clear = document.querySelector(".clear");
+clear.addEventListener('click',() => {
     let square = document.querySelectorAll(".square");
     square.forEach((square) => {
         square.style.backgroundColor = 'white';
     })
-    random = false;
 })
 
 // Grid size using a slider 

@@ -1,5 +1,116 @@
+body {
+    font-family: Roboto, sans-serif;
+    background-color: #fcd1d7;
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    margin-top: 20px;
+    font-size: 60px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+
+}
+
+/* Grid and Slider */
+.gridAndSlider {
+    gap: 20px;
+    margin: 0 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#slider:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px white;
+}
+
+#slider {
+    appearance: none;
+    border-radius: 10px;
+    width: 400px;
+    background: white;
+}
+
+#slider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    width: 25px; 
+    height: 25px; 
+    border-radius: 50%;
+    background: #475F94; 
+    cursor: pointer; 
+  }
+
+/* Tools */
+.tools {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.userColourBorder {
+    background-color: #475F94;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+}
+
+#userColour {
+    opacity: 0;
+    width: 100px;
+    height: 100px;
+}
+
+button {
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    width: 100px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+button:hover, .userColourBorder:hover  {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px white;
+}
+
+.active {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px white;
+}
+
+/* Footer */
+.footer {
+    background-color: white;
+    color: #fcd1d7;
+    padding: 25px 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/* Grid and Squares */
 .grid {
-    border: 2px solid black;
     height: 500px;
     width: 500px;
     display: flex;
@@ -9,10 +120,7 @@
 
 .square {
     box-sizing: border-box;
-    border: 1px solid black;
+    border: 1px solid lightgray;
     background-color: white;
 }
 
-#slider {
-    width: 400px;
-}
