@@ -96,17 +96,17 @@ userColourBorder.addEventListener('click',() => {
     }
 })
 
-// Easer
-let easer = document.querySelector(".easer");
-easer.addEventListener('click',() => {
-    if (easer.classList.contains('active')) {
+// Eraser
+let eraser = document.querySelector(".eraser");
+eraser.addEventListener('click',() => {
+    if (eraser.classList.contains('active')) {
         colour = userColour.value;
         random = false;
-        easer.classList.remove('active');
+        eraser.classList.remove('active');
     }
     else {
         removeActiveClass();
-        easer.classList.add('active');
+        eraser.classList.add('active');
         colour = 'white';
         random = false;
     }
