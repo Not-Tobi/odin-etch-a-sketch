@@ -50,7 +50,7 @@ function interactive() {
             mouse = true;
         })
 
-        square.addEventListener('mousemove', () => {
+        square.addEventListener('mouseover', () => {
             if (random && mouse) {
                 randomColour();
                 square.style.backgroundColor = colour;
@@ -66,10 +66,11 @@ function interactive() {
     }
 }
 
-// Normal
-let normal = document.querySelector(".normal");
-normal.addEventListener('click',() => {
-    colour = 'black';
+// User colour
+let userColour = document.querySelector("#userColour");
+userColour.addEventListener('input',() => {
+    colour = userColour.value;
+    random = false;
 })
 
 // Easer
@@ -100,7 +101,6 @@ reset.addEventListener('click',() => {
         square.style.backgroundColor = 'white';
     })
     random = false;
-    colour = 'black';
 })
 
 // Grid size using a slider 
@@ -109,8 +109,8 @@ const input = document.querySelector("#slider");
 sliderValue.textContent = input.value  + ' x ' + input.value;
 
 input.addEventListener("input", (event) => {
-    userInput = event.target.value
+    userInput = input.value
     removeExistingGrid();
     interactive();
-    sliderValue.textContent = event.target.value + ' x ' + event.target.value;
+    sliderValue.textContent = input.value + ' x ' + input.value;
 });

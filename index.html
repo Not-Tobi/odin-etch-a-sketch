@@ -8,16 +8,22 @@
     <script src="js-file.js" defer></script>
 </head>
 <body>
-    <div class="grid"></div>
-    <div class="slider"></div>
+    <div class='title'>Sketch It!</div>
+    <div clas ='grindAndSlider'>
+        <div class="grid"></div>
+        <input id="slider" type="range" min="1" max="100" step="1" value="16"/>
+        <p><output id="value"></output></p>  
+    </div> 
+
     <div class="tool">
-        <button class="normal">Normal</button>
+        <input id="userColour" type="color" id="head" name="head">
         <button class="easer">Easer</button>      
         <button class="rainbow">Rainbow</button>
         <button class="reset">Reset</button>
-    </div>
+    </div>  
 
-    <input id="slider" type="range" min="1" max="100" step="1" value="16"/>
-    <p>Value: <output id="value"></output></p>    
+    <div class='footer'>
+        <div class='footerText'>Made By Not-Tobi</div>
+    </div> 
 </body>
 </html>
