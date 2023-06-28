@@ -5,10 +5,20 @@ let gridSize = 500;
 let userInput = 16;
 let squareSize;
 let squareTotal;
+let grid = document.querySelector(".grid");
 interactive();
+
+// Remove existing grid
+function removeExistingGrid () {
+    let oldGrid = document.querySelectorAll('.square');
+    for (let i = 0; i < oldGrid.length; i++) {
+        grid.removeChild(oldGrid[i]);
+    }
+}
 
 // Each individual squares
 function interactive() {  
+    // Calculate the grid from user input
     function calculate () {
         squareSize = gridSize / userInput ;
         squareTotal = userInput  * userInput;
@@ -16,8 +26,9 @@ function interactive() {
     }
     calculate();
     
+    // Making the grid
     for (let i = 0; i < squareTotal; i++) {  
-        let grid = document.querySelector(".grid");
+        grid = document.querySelector(".grid");
         let square = document.createElement('div');
         square.classList.add('square')
         grid.appendChild(square);
@@ -54,6 +65,7 @@ function interactive() {
         })
     }
 }
+
 // Normal
 let normal = document.querySelector(".normal");
 normal.addEventListener('click',() => {
@@ -82,20 +94,23 @@ function randomColour() {
 
 // Reset
 let reset = document.querySelector(".reset");
-let squares = document.querySelectorAll(".square");
 reset.addEventListener('click',() => {
-    squares.forEach((squares) => {
-            squares.style.backgroundColor = 'white';
+    let square = document.querySelectorAll(".square");
+    square.forEach((square) => {
+        square.style.backgroundColor = 'white';
     })
     random = false;
     colour = 'black';
 })
 
 // Grid size using a slider 
-// const sliderValue = document.querySelector("#value");
-// const input = document.querySelector("#slider");
-// sliderValue.textContent = input.value;
-// input.addEventListener("input", (event) => {
-//     interactive(userInput = Number(event.target.value));
-//     sliderValue.textContent = event.target.value;
-// });
+const sliderValue = document.querySelector("#value");
+const input = document.querySelector("#slider");
+sliderValue.textContent = input.value  + ' x ' + input.value;
+
+input.addEventListener("input", (event) => {
+    userInput = event.target.value
+    removeExistingGrid();
+    interactive();
+    sliderValue.textContent = event.target.value + ' x ' + event.target.value;
+});
