@@ -1,13 +1,22 @@
-let mouse;
 let random;
 let colour = '#475F94';
 let gridSize = 500;
 let userInput = 16;
-let squareSize;
-let squareTotal;
 let grid = document.querySelector(".grid");
 let btn = document.querySelectorAll(".btn");
 interactive();
+
+// Grid size using a slider 
+const sliderValue = document.querySelector("#value");
+const input = document.querySelector("#slider");
+sliderValue.textContent = input.value  + ' x ' + input.value;
+
+input.addEventListener("input", () => {
+    userInput = input.value
+    removeExistingGrid();
+    interactive();
+    sliderValue.textContent = input.value + ' x ' + input.value;
+});
 
 // Remove existing grid
 function removeExistingGrid () {
@@ -17,19 +26,14 @@ function removeExistingGrid () {
     }
 }
 
-// Each individual squares
+// Add each individual squares
 function interactive() {  
-    // Calculate the grid from user input
-    function calculate () {
-        squareSize = gridSize / userInput ;
-        squareTotal = userInput  * userInput;
-        return;
-    }
-    calculate();
+    let squareSize = gridSize / userInput;
+    let squareTotal = userInput * userInput;
+    let mouse;
     
     // Making the grid
-    for (let i = 0; i < squareTotal; i++) {  
-        grid = document.querySelector(".grid");
+    for (let i = 0; i < squareTotal; i++) {    
         let square = document.createElement('div');
         square.classList.add('square')
         grid.appendChild(square);
@@ -37,7 +41,8 @@ function interactive() {
         square.setAttribute('style', `height: ${squareSize}px;`, `width: ${squareSize}px;`)
         
         // Using your mouse to change colours
-        square.addEventListener('click', () => {
+        square.addEventListener('mousedown', () => {
+            mouse = true;
             if (random) {
                 randomColour();
                 square.style.backgroundColor = colour;
@@ -45,10 +50,6 @@ function interactive() {
             else {
                 square.style.backgroundColor = colour;
             }
-        })
-
-        square.addEventListener('mousedown', () => {
-            mouse = true;
         })
 
         square.addEventListener('mouseover', () => {
@@ -70,8 +71,8 @@ function interactive() {
 // Remove Active Class
 function removeActiveClass() {
     btn.forEach(btn => {
-        console.log(btn)
         btn.classList.remove('active');
+        random = false;
     })
 }
 
@@ -81,7 +82,6 @@ let userColourBorder = document.querySelector(".userColourBorder");
 userColour.addEventListener('input',() => {
     userColourBorder.style.backgroundColor = userColour.value;
     colour = userColour.value;
-    random = false;
 })
 
 userColourBorder.addEventListener('click',() => {
@@ -92,7 +92,6 @@ userColourBorder.addEventListener('click',() => {
         removeActiveClass();
         userColourBorder.classList.add('active');
         colour = userColour.value;
-        random = false;
     }
 })
 
@@ -101,14 +100,12 @@ let eraser = document.querySelector(".eraser");
 eraser.addEventListener('click',() => {
     if (eraser.classList.contains('active')) {
         colour = userColour.value;
-        random = false;
         eraser.classList.remove('active');
     }
     else {
         removeActiveClass();
         eraser.classList.add('active');
         colour = 'white';
-        random = false;
     }
 })
 
@@ -116,9 +113,8 @@ eraser.addEventListener('click',() => {
 let rainbow = document.querySelector(".rainbow");
 rainbow.addEventListener('click',() => {
     if (rainbow.classList.contains('active')) {
+        removeActiveClass();
         colour = userColour.value;
-        random = false;
-        rainbow.classList.remove('active');
     }
     else {
         removeActiveClass();
@@ -142,15 +138,3 @@ clear.addEventListener('click',() => {
         square.style.backgroundColor = 'white';
     })
 })
-
-// Grid size using a slider 
-const sliderValue = document.querySelector("#value");
-const input = document.querySelector("#slider");
-sliderValue.textContent = input.value  + ' x ' + input.value;
-
-input.addEventListener("input", (event) => {
-    userInput = input.value
-    removeExistingGrid();
-    interactive();
-    sliderValue.textContent = input.value + ' x ' + input.value;
-});
