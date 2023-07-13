@@ -21,6 +21,7 @@ body {
 .main {
     display: flex;
     justify-content: center;
+    margin-right: 100px;
 
 }
 
@@ -97,6 +98,11 @@ button:hover, .userColourBorder:hover  {
     transform: scale(1.1);
     box-shadow: 0 0 10px white;
 }
+
+button:active {
+    transform: translatex(1px);
+}
+
 
 /* Footer */
 .footer {
